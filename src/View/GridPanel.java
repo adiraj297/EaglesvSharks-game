@@ -24,6 +24,10 @@ import Model.Piece.Shark4;
 import Model.Piece.Shark5;
 
 
+/**
+ * @author mohammed
+ *
+ */
 public class GridPanel extends JPanel{
 	
 	private JButton[][] squares;

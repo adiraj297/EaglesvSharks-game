@@ -8,6 +8,10 @@ import javax.swing.JPanel;
 
 import Controller.BoardController;
 
+/**
+ * @author mohammed
+ *
+ */
 public class StatusPanel extends JPanel {
 
 	private BoardController board = new BoardController() ;

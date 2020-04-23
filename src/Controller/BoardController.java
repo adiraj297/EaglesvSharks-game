@@ -7,6 +7,10 @@ import javax.swing.JButton;
 
 import Model.Game;
 
+/**
+ * @author mohammed
+ *
+ */
 public class BoardController implements ActionListener{
 	
 	private Game game = new Game();

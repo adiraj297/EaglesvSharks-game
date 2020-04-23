@@ -5,6 +5,10 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
+/**
+ * @author mohammed
+ *
+ */
 public class Player1Panel extends JPanel {
 
 	public Player1Panel() {

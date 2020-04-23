@@ -1,10 +1,43 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import Model.Piece.Piece;
+
+/**
+ * @author mohammed
+ *
+ */
 public class Player {
 	private String name;
+	private List<Piece> pieces;
 
 	public Player(String name) {
 		this.name = name;
+		this.pieces = new ArrayList<Piece>(); 
 	}
 
+	/**
+	 * @return
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @param piece
+	 */
+	public void addPiece(Piece piece) {
+		this.pieces.add((Piece) pieces);
+	}
+
+	
 }

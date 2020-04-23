@@ -2,6 +2,10 @@ package Model;
 
 import Model.Piece.Piece;
 
+/**
+ * @author mohammed
+ *
+ */
 public class Square {
 	private int row;
 	private int col;
@@ -13,26 +17,44 @@ public class Square {
 		this.piece = null;
 	}
 	
+	/**
+	 * @return
+	 */
 	public int getRow() {
 		return row;
 	}
 
+	/**
+	 * @param row
+	 */
 	public void setRow(int row) {
 		this.row = row;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getCol() {
 		return col;
 	}
 
+	/**
+	 * @param col
+	 */
 	public void setCol(int col) {
 		this.col = col;
 	}
 	
+	/**
+	 * @param piece
+	 */
 	public void setPiece(Piece piece) {
 		this.piece = piece;
 	}
 	
+	/**
+	 * @return
+	 */
 	public Piece getPiece() {
 		return this.piece;
 	}
