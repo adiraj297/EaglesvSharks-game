@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -58,9 +59,6 @@ public class GridPanel extends JPanel{
                 add(b);
 		    }
 	    }
-        Player playerOne = new Player("Mohammed");
-        Player playerTwo = new Player("Rajesh");
-        ImageIcon icon;
         
         squares[0][2].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/shark1.jpg"))));
 		squares[0][3].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/shark2.jpg"))));
@@ -68,11 +66,30 @@ public class GridPanel extends JPanel{
 		squares[0][5].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/shark4.jpg"))));
 		squares[0][6].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/shark5.jpg"))));
 		
-		squares[8][2].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle1.jpg"))));
-		squares[8][3].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle2.jpg"))));
-		squares[8][4].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle3.jpg"))));
-		squares[8][5].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle4.jpg"))));
-		squares[8][6].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle5.jpg"))));
+		squares[11][2].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle1.jpg"))));
+		squares[11][3].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle2.jpg"))));
+		squares[11][4].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle3.jpg"))));
+		squares[11][5].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle4.jpg"))));
+		squares[11][6].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle5.jpg"))));
+    }
+    
+
+    public void onPressSquare(ActionListener e) {
+	    for(int i = 0; i < 12; i++) {
+	    	for(int j = 0; j < 12; j++) {
+	    		if(squares[i][j].getIcon() == null)
+	    			squares[i][j].addActionListener(e);
+	    	}
+	    }
+    }
+    
+    public void onPressPiece(ActionListener e) {
+	    for(int i = 0; i < 12; i++) {
+	    	for(int j = 0; j < 12; j++) {
+	    		if(squares[i][j].getIcon() != null)
+	    			squares[i][j].addActionListener(e);
+	    	}
+	    }
     }
     
     private ImageIcon scaleImage(ImageIcon icon) {

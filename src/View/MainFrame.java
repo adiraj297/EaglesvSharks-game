@@ -11,18 +11,20 @@ import javax.swing.JPanel;
  *
  */
 public class MainFrame extends JFrame{
+	
+	public GridPanel board;
 
 	public MainFrame() {
 //		JFrame f=new JFrame();//creating instance of JFrame 
 		super();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     
-		JPanel gridP = new GridPanel();
+		board = new GridPanel();
 		JPanel statusP = new StatusPanel();
 		JPanel player1P = new Player1Panel();
 		JPanel player2P = new Player1Panel();
 		
-		add(gridP, BorderLayout.CENTER);
+		add(board, BorderLayout.CENTER);
 		add(statusP, BorderLayout.WEST);
 //		add(player2P, BorderLayout.SOUTH); //PLAYER2 STATUS
 //		add(player1P, BorderLayout.NORTH); //PLAYER1 STATUS
