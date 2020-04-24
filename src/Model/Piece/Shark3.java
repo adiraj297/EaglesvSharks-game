@@ -3,6 +3,7 @@ package Model.Piece;
 import Model.Player;
 
 /**
+ * shark child class
  * @author mohammed
  *
  */

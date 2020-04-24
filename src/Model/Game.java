@@ -5,6 +5,7 @@ import java.util.List;
 import Model.Piece.Piece;
 
 /**
+ * this is the engine class that will control all the game and its logic.
  * @author mohammed
  *
  */
@@ -30,7 +31,8 @@ public class Game {
 
 	
 	/**
-	 * @return
+	 * get current player to play
+	 * @return player
 	 */
 	public Player getTurn() {
 		return turn;
@@ -38,6 +40,7 @@ public class Game {
 
 	
 	/**
+	 * set current player to play
 	 * @param turn
 	 */
 	public void setTurn(Player turn) {
@@ -46,7 +49,8 @@ public class Game {
 
 	
 	/**
-	 * @return
+	 * get Piece that is selected on board
+	 * @return piece
 	 */
 	public Piece getSelecetdPiece() {
 		return selecetdPiece;
@@ -54,6 +58,7 @@ public class Game {
 
 	
 	/**
+	 * set Piece that is selected on board
 	 * @param selecetdPiece
 	 */
 	public void setSelecetdPiece(Piece selecetdPiece) {
@@ -62,6 +67,7 @@ public class Game {
 
 	
 	/**
+	 * get Square that is selected on board
 	 * @return
 	 */
 	public Square getSelectedSquare() {
@@ -70,6 +76,7 @@ public class Game {
 
 	
 	/**
+	 * set Square that is selected on board
 	 * @param selectedSquare
 	 */
 	public void setSelectedSquare(Square selectedSquare) {
@@ -78,6 +85,7 @@ public class Game {
 
 	
 	/**
+	 * get players array
 	 * @return
 	 */
 	public List<Player> getPlayers() {
@@ -86,6 +94,7 @@ public class Game {
 
 	
 	/**
+	 * get board object
 	 * @return
 	 */
 	public Board getBoard() {
@@ -94,9 +103,10 @@ public class Game {
 	
 	
 	/**
+	 * this will check if given targetSquare is attackable by square and will return boolean 
 	 * @param square
 	 * @param targetSquare
-	 * @return
+	 * @return boolean
 	 */
 	public boolean attackable(Square square, Square targetSquare) {
 		return false;
@@ -104,6 +114,7 @@ public class Game {
 	
 	
 	/**
+	 * attack piece
 	 * @param attackerPiece
 	 * @param square
 	 */
@@ -114,9 +125,10 @@ public class Game {
 	
 	/**
 	 * moves selected piece to selected square
-	 * 
+	 * @param square
+	 * @param targetSquare 
 	 */
-	public void move() {
+	public void move(Square square, Square targettedSquare) {
 		
 	}
 

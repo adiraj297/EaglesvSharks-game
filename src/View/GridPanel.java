@@ -4,25 +4,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Insets;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import Model.Player;
-import Model.Piece.Eagle1;
-import Model.Piece.Eagle2;
-import Model.Piece.Eagle3;
-import Model.Piece.Eagle4;
-import Model.Piece.Eagle5;
-import Model.Piece.Shark1;
-import Model.Piece.Shark2;
-import Model.Piece.Shark3;
-import Model.Piece.Shark4;
-import Model.Piece.Shark5;
 
 
 /**
@@ -47,7 +33,7 @@ public class GridPanel extends JPanel{
     public void drawBoard() {
 	    for(int i = 0; i < 12; i++) {
 	    	for(int j = 0; j < 12; j++) {
-	    		JButton b=new JButton(i+","+j); 
+	    		JButton b=new JButton(); 
 	    		
 	    		if((i+j)%2==1) b.setBackground(Color.black);
 	    		else b.setBackground(Color.white);
@@ -61,32 +47,22 @@ public class GridPanel extends JPanel{
 	    }
         
         squares[0][2].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/shark1.jpg"))));
-		squares[0][3].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/shark2.jpg"))));
-		squares[0][4].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/shark3.jpg"))));
-		squares[0][5].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/shark4.jpg"))));
-		squares[0][6].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/shark5.jpg"))));
+		squares[0][4].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/shark2.png"))));
+		squares[0][6].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/shark3.png"))));
+		squares[0][8].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/shark4.png"))));
+		squares[0][10].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/shark5.png"))));
 		
-		squares[11][2].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle1.jpg"))));
-		squares[11][3].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle2.jpg"))));
-		squares[11][4].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle3.jpg"))));
-		squares[11][5].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle4.jpg"))));
-		squares[11][6].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle5.jpg"))));
+		squares[11][1].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle1.png"))));
+		squares[11][3].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle2.png"))));
+		squares[11][5].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle3.png"))));
+		squares[11][7].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle4.png"))));
+		squares[11][9].setIcon(scaleImage(new ImageIcon(this.getClass().getResource("/resources/eagle5.png"))));
     }
     
 
     public void onPressSquare(ActionListener e) {
 	    for(int i = 0; i < 12; i++) {
 	    	for(int j = 0; j < 12; j++) {
-	    		if(squares[i][j].getIcon() == null)
-	    			squares[i][j].addActionListener(e);
-	    	}
-	    }
-    }
-    
-    public void onPressPiece(ActionListener e) {
-	    for(int i = 0; i < 12; i++) {
-	    	for(int j = 0; j < 12; j++) {
-	    		if(squares[i][j].getIcon() != null)
 	    			squares[i][j].addActionListener(e);
 	    	}
 	    }

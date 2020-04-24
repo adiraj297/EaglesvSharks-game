@@ -1,12 +1,7 @@
 package Model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import Model.Piece.*;
-
 /**
+ * Board class will keep track of the board and squares in the board
  * @author mohammed
  *
  */
@@ -21,6 +16,7 @@ public class Board {
 	
 	
 	/**
+	 * Get Square based on coordinates x,y => col,row
 	 * @param x
 	 * @param y
 	 * @return

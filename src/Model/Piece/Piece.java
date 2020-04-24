@@ -3,6 +3,7 @@ package Model.Piece;
 import Model.Player;
 
 /**
+ * piece class is an abstract class that gives the important and common functionalities that other ancestors can use. 
  * @author mohammed
  *
  */
@@ -75,9 +76,4 @@ public abstract class Piece {
 	public Player getPlayer() {
 		return player;
 	}
-	
-	public String toString() {
-		return "hello";
-	}
-
 }
