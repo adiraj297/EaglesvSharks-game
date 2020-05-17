@@ -125,11 +125,11 @@ public class Game {
 	
 	/**
 	 * moves selected piece to selected square
-	 * @param square
+	 * @param srcSquare
 	 * @param targetSquare 
 	 */
-	public void move(Square square, Square targettedSquare) {
-		
+	public boolean move(Square srcSquare, Square targetSquare) {
+		return false;
 	}
 
 }

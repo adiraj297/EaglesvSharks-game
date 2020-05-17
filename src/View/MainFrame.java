@@ -5,22 +5,27 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Model.Board;
+
 /**
  * @author mohammed
  *
  */
 public class MainFrame extends JFrame{
 	
-	public GridPanel board;
+	private final BoardPanel boardPanel;
+	private final Board board;
 
-	public MainFrame() {
+	public MainFrame(Board board) {
 		super();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		this.board = board;
     
-		board = new GridPanel();
+		boardPanel = new BoardPanel(this.board);
 		JPanel statusP = new StatusPanel();
 		
-		add(board, BorderLayout.CENTER);
+		add(boardPanel, BorderLayout.CENTER);
 		add(statusP, BorderLayout.WEST);
 
 		setSize(1200,1000);

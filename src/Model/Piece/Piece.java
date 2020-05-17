@@ -18,7 +18,7 @@ public abstract class Piece {
 	public Piece(Player player) {
 		this.player = player;
 		this.knocked = false;
-		this.player.addPiece(this);
+//		this.player.addPiece(this);
 	}
 	
 	/**
@@ -76,4 +76,6 @@ public abstract class Piece {
 	public Player getPlayer() {
 		return player;
 	}
+	
+	public abstract String iconName();
 }

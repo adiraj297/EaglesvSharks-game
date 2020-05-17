@@ -18,5 +18,9 @@ public class Shark1 extends Shark {
 		this.defencePower = 10;
 		this.movePower = 10;
 	}
+	
+	public String iconName() {
+		return "shark1";
+	}
 
 }

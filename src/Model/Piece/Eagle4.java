@@ -18,5 +18,9 @@ public class Eagle4 extends Eagle {
 		this.defencePower = 10;
 		this.movePower = 10;
 	}
+	
+	public String iconName() {
+		return "eagle4";
+	}
 
 }

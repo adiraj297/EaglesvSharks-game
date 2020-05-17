@@ -19,4 +19,8 @@ public class Eagle1 extends Eagle {
 		this.movePower = 10;
 	}
 
+	public String iconName() {
+		return "eagle1";
+	}
+	
 }
