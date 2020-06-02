@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Controller.GameController;
 import Model.Board;
 
 /**
@@ -15,14 +16,16 @@ public class MainFrame extends JFrame{
 	
 	private final BoardPanel boardPanel;
 	private final Board board;
+	private final GameController controller;
 
-	public MainFrame(Board board) {
+	public MainFrame(Board board, GameController controller) {
 		super();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		this.board = board;
+		this.controller = controller;
     
-		boardPanel = new BoardPanel(this.board);
+		boardPanel = new BoardPanel(this.board, this.controller);
 		JPanel statusP = new StatusPanel();
 		
 		add(boardPanel, BorderLayout.CENTER);

@@ -39,6 +39,10 @@ public class Player {
 	public void addPiece(Piece piece) {
 		this.pieces.add((Piece) pieces);
 	}
+	
+	public List<Piece> getPieces(){
+		return this.pieces;
+	}
 
 	
 }

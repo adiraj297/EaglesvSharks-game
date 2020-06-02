@@ -32,7 +32,7 @@ public class BoardPanel extends JPanel{
 	
 	final List<SquarePanel> boardSquares; 
 	
-	final Board board;
+	Board board;
 	final GameController controller;
 	
 	private Square srcSquare;
@@ -71,15 +71,16 @@ public class BoardPanel extends JPanel{
         
     }
     
+	public void redraw(Board borad) {
+		removeAll();
+		for(SquarePanel sqrPanel: boardSquares) {
+			sqrPanel.drawSquare(board);
+			add(sqrPanel);
+		}
+		validate();
+		repaint();
+	}
 
-//    public void onPressSquare() {
-//    	BoardMouseListener l = new BoardMouseListener();
-//	    for(int i = 0; i < 12; i++) {
-//	    	for(int j = 0; j < 12; j++) {
-//	    			squares[i][j].addMouseListener(l);
-//	    	}
-//	    }
-//    }
     
     
     private class SquarePanel extends JPanel{
@@ -100,32 +101,54 @@ public class BoardPanel extends JPanel{
 				e.printStackTrace();
 			}
     		
+    		System.out.println("piece init");
     		addMouseListener(new MouseListener() {
 
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					if(SwingUtilities.isRightMouseButton(e)) {
-						if(srcSquare == null) {
-							srcSquare = board.getSquare(row, col);
-							selectedPiece = srcSquare.getPiece();
-							if(selectedPiece != null)
-								srcSquare = null;
-						}else {
-							targetSquare = board.getSquare(row, col);
-							controller.movePiece(srcSquare, targetSquare);
-						}
-						
-					}else if(SwingUtilities.isLeftMouseButton(e)) {
-						
-					}
-					
 				}
 
 				@Override
 				public void mousePressed(MouseEvent e) {}
 
 				@Override
-				public void mouseReleased(MouseEvent e) {}
+				public void mouseReleased(MouseEvent e) {
+					if(SwingUtilities.isRightMouseButton(e)) {
+						System.out.println("piece deselected");
+						srcSquare = null;
+						targetSquare = null;
+						selectedPiece = null;
+					}else if(SwingUtilities.isLeftMouseButton(e)) {
+						if(srcSquare == null) {
+							
+							srcSquare = board.getSquare(row, col);
+							selectedPiece = srcSquare.getPiece();
+							if(selectedPiece == null) {
+								srcSquare = null;
+								
+							}else
+								System.out.println("first piece selected");
+						}else {
+							System.out.println("second piece selected");
+							targetSquare = board.getSquare(row, col);
+							controller.movePiece(srcSquare, targetSquare);
+							srcSquare = null;
+							targetSquare = null;
+							selectedPiece = null;
+							boardPanel.revalidate();
+						}
+						SwingUtilities.invokeLater(new Runnable() {
+
+							@Override
+							public void run() {
+								boardPanel.redraw(board);
+								
+							}
+							
+						});
+						
+					}
+				}
 
 				@Override
 				public void mouseEntered(MouseEvent e) {}
@@ -137,6 +160,18 @@ public class BoardPanel extends JPanel{
     		
     		
     		validate();
+    	}
+    	 
+    	public void drawSquare(Board board) {
+    		squareColor();
+    		try {
+				squareIcon(board);
+				validate();
+				repaint();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     	}
     	
     	private void squareColor() {
@@ -194,5 +229,4 @@ public class BoardPanel extends JPanel{
 		}
     	
     }
-
 }

@@ -12,7 +12,7 @@ import Model.Piece.Piece;
 public class Game {
 
 	private List<Player> players;
-	private Player turn;
+	private Player currPlayer;
 	private Piece selecetdPiece;
 	private Square selectedSquare;
 	private Board board;
@@ -34,8 +34,8 @@ public class Game {
 	 * get current player to play
 	 * @return player
 	 */
-	public Player getTurn() {
-		return turn;
+	public Player getCurrentPlayer() {
+		return currPlayer;
 	}
 
 	
@@ -43,8 +43,8 @@ public class Game {
 	 * set current player to play
 	 * @param turn
 	 */
-	public void setTurn(Player turn) {
-		this.turn = turn;
+	public void setTurn(Player p) {
+		this.currPlayer = p;
 	}
 
 	
@@ -129,7 +129,8 @@ public class Game {
 	 * @param targetSquare 
 	 */
 	public boolean move(Square srcSquare, Square targetSquare) {
-		return false;
+		MovePiece m = new MovePiece(srcSquare, targetSquare);
+		return m.move();
 	}
 
 }

@@ -7,6 +7,7 @@ import javax.swing.JButton;
 
 import Model.Board;
 import Model.Game;
+import Model.Square;
 import Model.Piece.Eagle1;
 import Model.Piece.Eagle2;
 import Model.Piece.Eagle3;
@@ -47,7 +48,7 @@ public class GameController {
 		
 		this.board = new Board(sharkPieces, eaglePieces);
 		
-		this.game = new MainFrame(this.board);
+		this.game = new MainFrame(this.board, this);
 		this.engine = new Game();
 		
 		startGame();
@@ -101,6 +102,16 @@ public class GameController {
 		this.turn++;
 		if(turn>1)  
 			turn=0;
+	}
+	
+	public void movePiece(Square srcSquare, Square targetSquare) {
+		//check piece belongs to curr player
+		if(srcSquare.getPiece().getPlayer() == engine.getCurrentPlayer())
+			
+		if(engine.move(srcSquare, targetSquare)) {
+			System.out.println("piece moved");
+		}else
+			System.out.println("piece NOT moved");
 	}
 
 }
