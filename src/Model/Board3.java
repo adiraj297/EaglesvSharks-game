@@ -9,7 +9,7 @@ import Model.Piece.Piece;
  * @author mohammed
  *
  */
-public class Board {
+public class Board3 {
 	
 	//Board size has to be even and above 10
 	private final int BOARD_SIZE = 12;
@@ -19,7 +19,7 @@ public class Board {
 	private final List<Piece> eaglePieces;
 	private final List<Piece> obstaclePieces;
 
-	public Board(List<Piece> sharkPieces, List<Piece> eaglePieces, List<Piece> obstaclePieces) {
+	public Board3(List<Piece> sharkPieces, List<Piece> eaglePieces, List<Piece> obstaclePieces) {
 		this.board = new Square[BOARD_SIZE][BOARD_SIZE];
 		this.sharkPieces = sharkPieces;
 		this.eaglePieces = eaglePieces;
@@ -36,17 +36,16 @@ public class Board {
 		this.board[0][0].setPiece(eaglePieces.get(0));
 		this.board[0][2].setPiece(eaglePieces.get(1));
 		this.board[0][4].setPiece(eaglePieces.get(2));
-		this.board[0][6].setPiece(eaglePieces.get(3));
-		this.board[0][8].setPiece(eaglePieces.get(4));
 		
 		this.board[5][8].setPiece(obstaclePieces.get(0));
 		this.board[5][3].setPiece(obstaclePieces.get(1));
 		
-		this.board[BOARD_SIZE-1][BOARD_SIZE-9].setPiece(sharkPieces.get(0));
-		this.board[BOARD_SIZE-1][BOARD_SIZE-7].setPiece(sharkPieces.get(1));
-		this.board[BOARD_SIZE-1][BOARD_SIZE-5].setPiece(sharkPieces.get(2));
-		this.board[BOARD_SIZE-1][BOARD_SIZE-3].setPiece(sharkPieces.get(3));
-		this.board[BOARD_SIZE-1][BOARD_SIZE-1].setPiece(sharkPieces.get(4));
+		
+		this.board[BOARD_SIZE-3][BOARD_SIZE-9].setPiece(sharkPieces.get(0));
+		this.board[BOARD_SIZE-3][BOARD_SIZE-7].setPiece(sharkPieces.get(1));
+		this.board[BOARD_SIZE-3][BOARD_SIZE-5].setPiece(sharkPieces.get(2));
+		
+		
 		
 	}
 	
@@ -60,7 +59,6 @@ public class Board {
 	public Square getSquare(int row, int col) {
 		if(this.board[row][col] != null) return this.board[row][col];
 		return null;
-		
 	}
 	
 	public Square[][] getBoard(){

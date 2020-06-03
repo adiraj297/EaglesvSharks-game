@@ -1,6 +1,6 @@
 import javax.swing.SwingUtilities;
 
-import Controller.GameController;
+import Controller.MenuController;
 
 /**
  * @author mohammed
@@ -12,7 +12,7 @@ public class App {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
 			public void run() {
-            	new GameController();
+            	new MenuController();
             }
         });
 	}
