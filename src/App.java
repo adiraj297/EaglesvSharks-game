@@ -1,5 +1,6 @@
+import javax.swing.SwingUtilities;
+
 import Controller.GameController;
-import View.MainFrame;
 
 /**
  * @author mohammed
@@ -8,7 +9,12 @@ import View.MainFrame;
 public class App {
 
 	public static void main(String[] args) {
-		new GameController();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+			public void run() {
+            	new GameController();
+            }
+        });
 	}
 
 }

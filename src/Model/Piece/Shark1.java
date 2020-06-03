@@ -3,6 +3,7 @@ package Model.Piece;
 import Model.Player;
 
 /**
+ * shark child class
  * @author mohammed
  * 
  */
@@ -16,6 +17,10 @@ public class Shark1 extends Shark {
 		this.attackPower = 10;
 		this.defencePower = 10;
 		this.movePower = 10;
+	}
+	
+	public String iconName() {
+		return "shark1";
 	}
 
 }

@@ -3,6 +3,7 @@ package Model.Piece;
 import Model.Player;
 
 /**
+ * eagle parent class 
  * @author mohammed
  *
  */

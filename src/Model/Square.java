@@ -3,6 +3,7 @@ package Model;
 import Model.Piece.Piece;
 
 /**
+ * this class is responsible for a specific square in the board and it holds coordinates information and piece if it has one 
  * @author mohammed
  *
  */
@@ -50,6 +51,8 @@ public class Square {
 	 */
 	public void setPiece(Piece piece) {
 		this.piece = piece;
+		if(piece != null)
+			this.piece.setSquare(this);
 	}
 	
 	/**

@@ -1,8 +1,10 @@
 package Model.Piece;
 
 import Model.Player;
+import Model.Square;
 
 /**
+ * piece class is an abstract class that gives the important and common functionalities that other ancestors can use. 
  * @author mohammed
  *
  */
@@ -13,13 +15,24 @@ public abstract class Piece {
 	protected int movePower;
 	private Player player;
 	private boolean knocked;
+	private Square square;
 
 	public Piece(Player player) {
 		this.player = player;
 		this.knocked = false;
-		this.player.addPiece(this);
+		this.square = null;
+//		this.player.addPiece(this);
 	}
 	
+	
+	public Square getSquare() {
+		return square;
+	}
+
+	public void setSquare(Square square) {
+		this.square = square;
+	}
+
 	/**
 	 * @return
 	 */
@@ -75,9 +88,7 @@ public abstract class Piece {
 	public Player getPlayer() {
 		return player;
 	}
-	
-	public String toString() {
-		return "hello";
-	}
 
+	
+	public abstract String iconName();
 }
