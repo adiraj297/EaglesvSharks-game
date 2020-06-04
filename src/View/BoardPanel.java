@@ -71,7 +71,7 @@ public class BoardPanel extends JPanel{
         
     }
     
-	public void redraw(Board borad) {
+	public void redraw(Board board) {
 		removeAll();
 		for(SquarePanel sqrPanel: boardSquares) {
 			sqrPanel.drawSquare(board);

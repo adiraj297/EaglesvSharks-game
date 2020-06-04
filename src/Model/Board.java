@@ -17,11 +17,13 @@ public class Board {
 	
 	private final List<Piece> sharkPieces;
 	private final List<Piece> eaglePieces;
+	private final List<Piece> obstaclePieces;
 
-	public Board(List<Piece> sharkPieces, List<Piece> eaglePieces) {
+	public Board(List<Piece> sharkPieces, List<Piece> eaglePieces, List<Piece> obstaclePieces) {
 		this.board = new Square[BOARD_SIZE][BOARD_SIZE];
 		this.sharkPieces = sharkPieces;
 		this.eaglePieces = eaglePieces;
+		this.obstaclePieces = obstaclePieces;
 		populateSquares();
 	}	
 	
@@ -36,6 +38,9 @@ public class Board {
 		this.board[0][4].setPiece(eaglePieces.get(2));
 		this.board[0][6].setPiece(eaglePieces.get(3));
 		this.board[0][8].setPiece(eaglePieces.get(4));
+		
+		this.board[5][8].setPiece(obstaclePieces.get(0));
+		this.board[5][3].setPiece(obstaclePieces.get(1));
 		
 		this.board[BOARD_SIZE-1][BOARD_SIZE-9].setPiece(sharkPieces.get(0));
 		this.board[BOARD_SIZE-1][BOARD_SIZE-7].setPiece(sharkPieces.get(1));
@@ -55,6 +60,7 @@ public class Board {
 	public Square getSquare(int row, int col) {
 		if(this.board[row][col] != null) return this.board[row][col];
 		return null;
+		
 	}
 	
 	public Square[][] getBoard(){

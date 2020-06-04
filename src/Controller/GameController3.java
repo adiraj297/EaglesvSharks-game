@@ -11,14 +11,15 @@ import Model.Square;
 import Model.Piece.Eagle1;
 import Model.Piece.Eagle2;
 import Model.Piece.Eagle3;
-import Model.Piece.Eagle4;
-import Model.Piece.Eagle5;
+
+import Model.Piece.Obstacle1;
+import Model.Piece.Obstacle2;
 import Model.Piece.Piece;
-import Model.Piece.Shark1;
+
 import Model.Piece.Shark2;
 import Model.Piece.Shark3;
 import Model.Piece.Shark4;
-import Model.Piece.Shark5;
+
 import View.MainFrame3;
 
 /**
@@ -37,16 +38,18 @@ public class GameController3 {
 	private final Board3 board;
 	private final List<Piece> sharkPieces;
 	private final List<Piece> eaglePieces;
+	private final List<Piece> obstaclePieces;
 
 	public GameController3() {
 
 		sharkPieces = new ArrayList<Piece>();
 		eaglePieces = new ArrayList<Piece>();
+		obstaclePieces = new ArrayList<Piece>();
 
 		// temp func
 		makePieces();
 
-		this.board = new Board3(sharkPieces, eaglePieces);
+		this.board = new Board3(sharkPieces, eaglePieces, obstaclePieces);
 
 		this.game = new MainFrame3(this.board, this);
 		this.engine = new Game();
@@ -76,6 +79,12 @@ public class GameController3 {
 		eaglePieces.add(e1);
 		eaglePieces.add(e2);
 		eaglePieces.add(e3);
+		
+		Piece o1 = new Obstacle1(null);
+		obstaclePieces.add(o1);
+
+		Piece o2 = new Obstacle2(null);
+		obstaclePieces.add(o2);
 		
 	
 	}

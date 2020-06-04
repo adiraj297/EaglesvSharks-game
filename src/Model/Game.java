@@ -109,7 +109,14 @@ public class Game {
 	 * @return boolean
 	 */
 	public boolean attackable(Square square, Square targetSquare) {
-		return false;
+		//obstacle is not attackable and implement code so that piece that attacks it is knocked
+		
+		if(targetSquare.getCol() == 8 && targetSquare.getRow() == 5)
+				return false;
+		else if (targetSquare.getCol() == 3 && targetSquare.getRow() == 5)
+			return false;
+			
+		return true;
 	}
 	
 	
@@ -130,7 +137,10 @@ public class Game {
 	 */
 	public boolean move(Square srcSquare, Square targetSquare) {
 		MovePiece m = new MovePiece(srcSquare, targetSquare);
+			System.err.println(attackable(srcSquare, targetSquare));
+			if(!attackable(srcSquare, targetSquare)) return false;
 		return m.move();
 	}
 
 }
+

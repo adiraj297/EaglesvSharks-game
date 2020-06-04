@@ -65,4 +65,6 @@ public class Square {
 	public String toString() {
 		return this.piece != null ? "p":row + "|" + col + " ";
 	}
+	
+	
 }

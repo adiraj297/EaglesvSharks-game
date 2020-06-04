@@ -12,13 +12,13 @@ import Model.Piece.Eagle1;
 import Model.Piece.Eagle2;
 import Model.Piece.Eagle3;
 import Model.Piece.Eagle4;
-import Model.Piece.Eagle5;
+import Model.Piece.Obstacle1;
+import Model.Piece.Obstacle2;
 import Model.Piece.Piece;
 import Model.Piece.Shark1;
 import Model.Piece.Shark2;
 import Model.Piece.Shark3;
 import Model.Piece.Shark4;
-import Model.Piece.Shark5;
 import View.MainFrame2;
 
 /**
@@ -37,16 +37,18 @@ public class GameController2 {
 	private final Board2 board;
 	private final List<Piece> sharkPieces;
 	private final List<Piece> eaglePieces;
+	private final List<Piece> obstaclePieces;
 
 	public GameController2() {
 
 		sharkPieces = new ArrayList<Piece>();
 		eaglePieces = new ArrayList<Piece>();
+		obstaclePieces = new ArrayList<Piece>();
 
 		// temp func
 		makePieces();
 
-		this.board = new Board2(sharkPieces, eaglePieces);
+		this.board = new Board2(sharkPieces, eaglePieces, obstaclePieces);
 
 		this.game = new MainFrame2(this.board, this);
 		this.engine = new Game();
@@ -55,31 +57,33 @@ public class GameController2 {
 	}
 
 	private void makePieces() {
-		
 		Piece s1 = new Shark1(null);
 		Piece s2 = new Shark2(null);
 		Piece s3 = new Shark3(null);
 		Piece s4 = new Shark4(null);
-;
+
 
 		sharkPieces.add(s1);
 		sharkPieces.add(s2);
 		sharkPieces.add(s3);
 		sharkPieces.add(s4);
-		
-		
 
 		Piece e1 = new Eagle1(null);
 		Piece e2 = new Eagle2(null);
 		Piece e3 = new Eagle3(null);
 		Piece e4 = new Eagle4(null);
-		
 
 		eaglePieces.add(e1);
 		eaglePieces.add(e2);
 		eaglePieces.add(e3);
 		eaglePieces.add(e4);
-		
+
+		Piece o1 = new Obstacle1(null);
+		obstaclePieces.add(o1);
+
+		Piece o2 = new Obstacle2(null);
+		obstaclePieces.add(o2);
+
 	}
 
 	public void startGame() {
