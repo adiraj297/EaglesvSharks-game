@@ -18,6 +18,12 @@ import Model.Board;
 import Model.Board2;
 import Model.Board3;
 
+/**
+ * 
+ * @author Aditya Raj
+ * @author Rajesh Choudhari
+ *
+ */
 public class MenuView {
 
 	public static void display() {

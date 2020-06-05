@@ -7,14 +7,12 @@ import Model.Piece.Piece;
 
 /**
  * Board class will keep track of the board and squares in the board
- * @author mohammed
+ *  @author Aditya Raj
+ *  @author Rajesh Choudhari
  *
  */
 public class Board3 implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	//Board size has to be even and above 10
 	private final int BOARD_SIZE = 12;

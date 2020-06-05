@@ -2,7 +2,15 @@ package Model;
 
 import Model.Piece.Piece;
 
-//responsible for moving a piece and checking the validity of moving a piece to a given square
+/**
+ * 
+ * @author Aditya Raj
+ * @author Rajesh Choudhari
+ *
+ */
+
+// responsible for moving a piece and checking the validity of moving a piece to
+// a given square
 public class MovePiece {
 
 	private Square targetSquare;

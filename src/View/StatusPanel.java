@@ -19,6 +19,13 @@ import Model.Board;
 import Model.Board2;
 import Model.Board3;
 
+/**
+ * 
+ * @author Aditya Raj
+ * @author Rajesh Choudhari
+ *
+ */
+
 //This panel will show status of players, movements, and pieces' strength and weaknesses
 public class StatusPanel extends JPanel {
 	private static final long serialVersionUID = 1L;

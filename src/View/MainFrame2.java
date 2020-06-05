@@ -8,6 +8,12 @@ import javax.swing.JPanel;
 import Controller.GameController2;
 import Model.Board2;
 
+/**
+ * 
+ * @author Aditya Raj
+ * @author Rajesh Choudhari
+ *
+ */
 public class MainFrame2 extends JFrame {
 
 	private static final long serialVersionUID = 1L;

@@ -25,7 +25,14 @@ import Model.Piece.Shark3;
 
 import View.MainFrame3;
 
-//Game controller class that will transmit data to model and view.
+/**
+ * Game controller class that will transmit data to model and view.
+ * 
+ * @author Aditya Raj
+ * @author Rajesh Choudhari
+ *
+ */
+
 public class GameController3 {
 
 	private int turn = 0;
@@ -64,12 +71,11 @@ public class GameController3 {
 	}
 
 	private void makePieces() {
-		
+
 		Piece s1 = new Shark1(null);
 		Piece s2 = new Shark2(null);
 		Piece s3 = new Shark3(null);
-		
-		
+
 		sharkPieces.add(s1);
 		sharkPieces.add(s2);
 		sharkPieces.add(s3);
