@@ -15,7 +15,7 @@ The task is to develop a two dimensional, turn based board game, which is to be 
 ### High cohesion
 ### Creator
 ### Controller
-The system is based on MVC design and structures, therefore it has controllers
+The system is based on MVC design and structures, tehrefore it has controllers
 
 ### Polymorphism
 ### Indirection

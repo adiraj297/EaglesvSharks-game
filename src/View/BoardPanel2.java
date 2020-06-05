@@ -12,11 +12,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.border.Border;
 
 import Controller.GameController2;
 import Model.Board2;
@@ -37,7 +40,8 @@ public class BoardPanel2 extends JPanel {
 	private Square srcSquare;
 	private Square targetSquare;
 	private Piece selectedPiece;
-
+	private SquarePanel lastSqrPanel;
+	private String lastPlayer = null;
 	public BoardPanel2(Board2 board, GameController2 controller) {
 
 		this.board = board;
@@ -93,7 +97,9 @@ public class BoardPanel2 extends JPanel {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
+			Border redBorder = BorderFactory.createLineBorder(Color.RED, 5);
+			
 			System.out.println("piece init");
 			addMouseListener(new MouseListener() {
 
@@ -109,27 +115,66 @@ public class BoardPanel2 extends JPanel {
 				public void mouseReleased(MouseEvent e) {
 					if (SwingUtilities.isRightMouseButton(e)) {
 						System.out.println("piece deselected");
+
+						if (null != lastSqrPanel) {
+							lastSqrPanel.setBorder(blackBorder);
+							lastSqrPanel = null;
+						}
 						srcSquare = null;
 						targetSquare = null;
 						selectedPiece = null;
 					} else if (SwingUtilities.isLeftMouseButton(e)) {
+
 						if (srcSquare == null) {
 
 							srcSquare = board.getSquare(row, col);
-							selectedPiece = srcSquare.getPiece();
-							if (selectedPiece == null) {
-								srcSquare = null;
 
-							} else
+							if (null != srcSquare.getPiece()
+									&& (null == lastPlayer || !srcSquare.getPiece().iconName().contains(lastPlayer))) {
+								selectedPiece = srcSquare.getPiece();
+								if (selectedPiece == null) {
+									srcSquare = null;
+
+								} else {
+									lastSqrPanel = (SquarePanel) e.getSource();
+								}
+								if (null != lastSqrPanel)
+									lastSqrPanel.setBorder(redBorder);
 								System.out.println("first piece selected");
+							} else {
+
+								srcSquare = null;
+								if (null != lastPlayer) {
+									String player = lastPlayer.contains("shark") ? "Eagle" : "Shark";
+									JOptionPane.showMessageDialog(SwingUtilities.getRootPane(boardPanel2),
+											player + "'s turn to play. Please wait for your turn.");
+								}
+
+							}
+
 						} else {
 							System.out.println("second piece selected");
 							targetSquare = board.getSquare(row, col);
-							controller.movePiece(srcSquare, targetSquare);
+							if (null != lastSqrPanel)
+								lastSqrPanel.setBorder(blackBorder);
+							lastSqrPanel = null;
+							
+							boolean moveStatus  = controller.movePiece(srcSquare, targetSquare);
+							if (null != selectedPiece) {
+								lastPlayer = selectedPiece.iconName();
+								lastPlayer = lastPlayer.substring(0, lastPlayer.length() - 1);
+								if(!moveStatus)
+									lastPlayer = null;
+							}
 							srcSquare = null;
 							targetSquare = null;
 							selectedPiece = null;
 							boardPanel2.revalidate();
+							String gameStatus = controller.checkGameStatus();
+							if (null != controller.checkGameStatus()) {
+								JOptionPane.showMessageDialog(SwingUtilities.getRootPane(boardPanel2), gameStatus);
+							}
+
 						}
 						SwingUtilities.invokeLater(new Runnable() {
 

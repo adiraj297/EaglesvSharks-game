@@ -14,9 +14,9 @@ public class Eagle1 extends Eagle {
 		super(player);
 		
 		// TODO numbers should change depending on piece
-		this.attackPower = 10;
-		this.defencePower = 10;
-		this.movePower = 10;
+		this.attackPower = 3;
+		this.defencePower = 7;
+		this.movePower = 2;
 	}
 
 	public String iconName() {

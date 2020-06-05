@@ -1,5 +1,7 @@
 package Model;
 
+import java.io.Serializable;
+
 import Model.Piece.Piece;
 
 /**
@@ -7,7 +9,11 @@ import Model.Piece.Piece;
  * @author mohammed
  *
  */
-public class Square {
+public class Square implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int row;
 	private int col;
 	private Piece piece;

@@ -13,6 +13,7 @@ import Model.Piece.Piece;
 public class Player {
 	private String name;
 	private List<Piece> pieces;
+	
 
 	public Player(String name) {
 		this.name = name;
