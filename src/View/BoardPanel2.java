@@ -26,6 +26,7 @@ import Model.Board2;
 import Model.Square;
 import Model.Piece.Piece;
 
+
 /**
  * @author mohammed
  *
@@ -42,10 +43,13 @@ public class BoardPanel2 extends JPanel {
 	private Piece selectedPiece;
 	private SquarePanel lastSqrPanel;
 	private String lastPlayer = null;
-	public BoardPanel2(Board2 board, GameController2 controller) {
+	private JPanel statusP;
+	
+	public BoardPanel2(Board2 board, GameController2 controller, JPanel statusP) {
 
 		this.board = board;
 		this.controller = controller;
+		this.statusP = statusP;
 
 		this.boardSquares = new ArrayList<SquarePanel>();
 		setLayout(null);
@@ -100,7 +104,7 @@ public class BoardPanel2 extends JPanel {
 			Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
 			Border redBorder = BorderFactory.createLineBorder(Color.RED, 5);
 			
-			System.out.println("piece init");
+			
 			addMouseListener(new MouseListener() {
 
 				@Override
@@ -176,6 +180,7 @@ public class BoardPanel2 extends JPanel {
 							}
 
 						}
+						statusP = null;
 						SwingUtilities.invokeLater(new Runnable() {
 
 							@Override
@@ -191,7 +196,28 @@ public class BoardPanel2 extends JPanel {
 
 				@Override
 				public void mouseEntered(MouseEvent e) {
+
+					SquarePanel currentSqrPanel = (SquarePanel) e.getSource();
+
+					if (null != board.getSquare(row, col).getPiece()) {
+						Square currentSqr = board.getSquare(row, col);
+					
+						if(currentSqr.getPiece().iconName().contains("obstacle"))
+						{
+							String toolTipText = "<html><b>obstacle</b> Can not be attacked.</html>";
+							currentSqrPanel.setToolTipText(toolTipText);
+						}
+						else
+						{	
+						String toolTipText = "<html><b> Name:</b> " + currentSqr.getPiece().iconName()
+								+ "<br /><b>Attack:</b> " + currentSqr.getPiece().getAttackPower() + "<br /><b>Defence:</b> "
+								+ currentSqr.getPiece().getDefencePower() + "<br /><b>Move:</b> "
+								+ currentSqr.getPiece().getMovePower()+"</html>";
+						currentSqrPanel.setToolTipText(toolTipText);
+						}
+					}
 				}
+
 
 				@Override
 				public void mouseExited(MouseEvent e) {
