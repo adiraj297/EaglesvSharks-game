@@ -8,12 +8,9 @@ import javax.swing.JPanel;
 import Controller.GameController2;
 import Model.Board2;
 
-/**
- * @author mohammed
- *
- */
 public class MainFrame2 extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private final BoardPanel2 boardPanel2;
 	private final Board2 board2;
 	private final GameController2 controller2;

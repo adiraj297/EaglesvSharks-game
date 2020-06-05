@@ -8,12 +8,9 @@ import javax.swing.JPanel;
 import Controller.GameController3;
 import Model.Board3;
 
-/**
- * @author mohammed
- *
- */
 public class MainFrame3 extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private final BoardPanel3 boardPanel3;
 	private final Board3 board3;
 	private final GameController3 controller3;
