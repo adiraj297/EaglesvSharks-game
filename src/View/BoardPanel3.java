@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -14,7 +13,6 @@ import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -26,11 +24,8 @@ import Model.Board3;
 import Model.Square;
 import Model.Piece.Piece;
 
-/**
- * @author mohammed
- *
- */
 public class BoardPanel3 extends JPanel {
+	private static final long serialVersionUID = 1L;
 
 	final List<SquarePanel> boardSquares;
 
@@ -52,7 +47,7 @@ public class BoardPanel3 extends JPanel {
 
 		drawBoard();
 
-//		onPressSquare();
+		// onPressSquare();
 
 		setLayout(new GridLayout(10, 10, 0, 0));
 		setPreferredSize(new Dimension(1000, 1000));
@@ -81,6 +76,7 @@ public class BoardPanel3 extends JPanel {
 	}
 
 	private class SquarePanel extends JPanel {
+		private static final long serialVersionUID = 1L;
 		private final int row;
 		private final int col;
 
@@ -94,12 +90,11 @@ public class BoardPanel3 extends JPanel {
 			try {
 				squareIcon(board);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
 			Border redBorder = BorderFactory.createLineBorder(Color.RED, 5);
-			
+
 			System.out.println("piece init");
 			addMouseListener(new MouseListener() {
 
@@ -156,12 +151,12 @@ public class BoardPanel3 extends JPanel {
 							if (null != lastSqrPanel)
 								lastSqrPanel.setBorder(blackBorder);
 							lastSqrPanel = null;
-							
-							boolean moveStatus  = controller.movePiece(srcSquare, targetSquare);
+
+							boolean moveStatus = controller.movePiece(srcSquare, targetSquare);
 							if (null != selectedPiece) {
 								lastPlayer = selectedPiece.iconName();
 								lastPlayer = lastPlayer.substring(0, lastPlayer.length() - 1);
-								if(!moveStatus)
+								if (!moveStatus)
 									lastPlayer = null;
 							}
 							srcSquare = null;
@@ -207,7 +202,6 @@ public class BoardPanel3 extends JPanel {
 				validate();
 				repaint();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -233,40 +227,6 @@ public class BoardPanel3 extends JPanel {
 			Image img = icon.getImage();
 			Image resizedImage = img.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
 			return new ImageIcon(resizedImage);
-		}
-
-	}
-
-	private class BoardMouseListener implements MouseListener {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
 
 	}

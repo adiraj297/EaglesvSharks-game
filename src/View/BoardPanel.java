@@ -29,6 +29,7 @@ import Model.Piece.Piece;
  *
  */
 public class BoardPanel extends JPanel {
+	private static final long serialVersionUID = 1L;
 
 	final List<SquarePanel> boardSquares;
 
@@ -79,9 +80,6 @@ public class BoardPanel extends JPanel {
 	}
 
 	private class SquarePanel extends JPanel {
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 183436188435541249L;
 		private final int row;
 		private final int col;

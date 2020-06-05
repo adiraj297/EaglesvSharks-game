@@ -8,10 +8,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-
-import Model.Board;
 import Model.Board2;
 import Model.Game;
 import Model.Square;
@@ -26,20 +22,11 @@ import Model.Piece.Shark1;
 import Model.Piece.Shark2;
 import Model.Piece.Shark3;
 import Model.Piece.Shark4;
-import View.MainFrame;
 import View.MainFrame2;
 
-/**
- * Game controller class that will transmit data to model and view.
- * 
- * @author mohammed
- *
- */
+// Game controller class that will transmit data to model and view.
 public class GameController2 {
 
-	private MainFrame2 game;
-	private JButton square;
-	private JButton selectedSquare;
 	private int turn = 0;
 	private Game engine;
 	private final Board2 board;
@@ -59,7 +46,7 @@ public class GameController2 {
 
 		this.board = new Board2(sharkPieces, eaglePieces, obstaclePieces);
 
-		this.game = new MainFrame2(this.board, this);
+		new MainFrame2(this.board, this);
 		this.engine = new Game();
 
 		startGame();
@@ -70,7 +57,7 @@ public class GameController2 {
 		this.sharkPieces = null;
 		this.board = board2;
 
-		this.game = new MainFrame2(this.board, this);
+		new MainFrame2(this.board, this);
 		this.engine = new Game();
 
 		startGame();

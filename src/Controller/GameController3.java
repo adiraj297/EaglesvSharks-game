@@ -8,8 +8,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
-
 import Model.Board3;
 import Model.Game;
 import Model.Square;
@@ -26,17 +24,9 @@ import Model.Piece.Shark3;
 import Model.Piece.Shark4;
 import View.MainFrame3;
 
-/**
- * Game controller class that will transmit data to model and view.
- * 
- * @author mohammed
- *
- */
+//Game controller class that will transmit data to model and view.
 public class GameController3 {
 
-	private MainFrame3 game;
-	private JButton square;
-	private JButton selectedSquare;
 	private int turn = 0;
 	private Game engine;
 	private final Board3 board;
@@ -51,23 +41,22 @@ public class GameController3 {
 		this.eaglePieces = new ArrayList<Piece>();
 		this.obstaclePieces = new ArrayList<Piece>();
 
-
 		// temp func
 		makePieces();
 
 		this.board = new Board3(sharkPieces, eaglePieces, obstaclePieces);
 
-		this.game = new MainFrame3(this.board, this);
+		new MainFrame3(this.board, this);
 		this.engine = new Game();
 
 		startGame();
 	}
-	
+
 	public GameController3(Board3 board3) {
 		this.sharkPieces = null;
 		this.board = board3;
 
-		this.game = new MainFrame3(this.board, this);
+		new MainFrame3(this.board, this);
 		this.engine = new Game();
 
 		startGame();
@@ -100,21 +89,21 @@ public class GameController3 {
 	}
 
 	public void startGame() {
-//		game.board.onPressSquare(e->{
-//			selectedSquare = (JButton)e.getSource();
-//			if(selectedSquare != null ) { 
-//				if(selectedSquare.getIcon() != null) {
-//					square = selectedSquare;
-//				}else {
-//					if(square != null) {
-//						selectedSquare.setIcon(square.getIcon());
-//						square.setIcon(null);
-//						square = null;
-//						turn();
-//					}
-//				}
-//			}
-//		});
+		// game.board.onPressSquare(e->{
+		// selectedSquare = (JButton)e.getSource();
+		// if(selectedSquare != null ) {
+		// if(selectedSquare.getIcon() != null) {
+		// square = selectedSquare;
+		// }else {
+		// if(square != null) {
+		// selectedSquare.setIcon(square.getIcon());
+		// square.setIcon(null);
+		// square = null;
+		// turn();
+		// }
+		// }
+		// }
+		// });
 	}
 
 	public void turn() {

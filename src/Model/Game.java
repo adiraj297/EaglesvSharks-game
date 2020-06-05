@@ -23,93 +23,42 @@ public class Game {
 
 	}
 
-	/**
-	 * 
-	 */
 	public void startGame() {
 
 	}
 
-	/**
-	 * get current player to play
-	 * 
-	 * @return player
-	 */
 	public Player getCurrentPlayer() {
 		return currPlayer;
 	}
 
-	/**
-	 * set current player to play
-	 * 
-	 * @param turn
-	 */
 	public void setTurn(Player p) {
 		this.currPlayer = p;
 	}
 
-	/**
-	 * get Piece that is selected on board
-	 * 
-	 * @return piece
-	 */
 	public Piece getSelecetdPiece() {
 		return selecetdPiece;
 	}
 
-	/**
-	 * set Piece that is selected on board
-	 * 
-	 * @param selecetdPiece
-	 */
 	public void setSelecetdPiece(Piece selecetdPiece) {
 		this.selecetdPiece = selecetdPiece;
 	}
 
-	/**
-	 * get Square that is selected on board
-	 * 
-	 * @return
-	 */
 	public Square getSelectedSquare() {
 		return selectedSquare;
 	}
 
-	/**
-	 * set Square that is selected on board
-	 * 
-	 * @param selectedSquare
-	 */
 	public void setSelectedSquare(Square selectedSquare) {
 		this.selectedSquare = selectedSquare;
 	}
 
-	/**
-	 * get players array
-	 * 
-	 * @return
-	 */
 	public List<Player> getPlayers() {
 		return players;
 	}
 
-	/**
-	 * get board object
-	 * 
-	 * @return
-	 */
 	public Board getBoard() {
 		return board;
 	}
 
-	/**
-	 * this will check if given targetSquare is attackable by square and will return
-	 * boolean
-	 * 
-	 * @param square
-	 * @param targetSquare
-	 * @return boolean
-	 */
 	public boolean attackable(Square square, Square targetSquare) {
 		// obstacle is not attackable and implement code so that piece that attacks it
 		// is knocked
@@ -148,8 +97,8 @@ public class Game {
 		row.add(y - 1);
 		row.add(y);
 		row.add(y + 1);
-		System.out.println("Source X: "+square.getCol()+" Y:"+square.getRow());
-		System.out.println("Targert X: "+targetSquare.getCol()+" Y:"+targetSquare.getRow());
+		System.out.println("Source X: " + square.getCol() + " Y:" + square.getRow());
+		System.out.println("Targert X: " + targetSquare.getCol() + " Y:" + targetSquare.getRow());
 		for (int i = 0; i < col.size(); i++) {
 			for (int j = 0; j < row.size(); j++) {
 				System.err.println("X: " + col.get(i) + " Y: " + row.get(j));
@@ -162,13 +111,6 @@ public class Game {
 		return false;
 	}
 
-	/**
-	 * attack piece
-	 * 
-	 * @param attackerPiece
-	 * @param square
-	 * @return
-	 */
 	public boolean attack(Square attackerPiece, Square defencePiece) {
 
 		if (null == attackerPiece.getPiece() || null == defencePiece.getPiece())
@@ -196,12 +138,6 @@ public class Game {
 
 	}
 
-	/**
-	 * moves selected piece to selected square
-	 * 
-	 * @param srcSquare
-	 * @param targetSquare
-	 */
 	public boolean move(Square srcSquare, Square targetSquare) {
 		MovePiece m = new MovePiece(srcSquare, targetSquare);
 		if (!attackable(srcSquare, targetSquare)) {
