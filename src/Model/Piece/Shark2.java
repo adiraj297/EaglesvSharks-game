@@ -2,25 +2,22 @@ package Model.Piece;
 
 import Model.Player;
 
-/**
- * shark child class
- * @author mohammed
- *
- */
-//TODO class name should represent descriptive naming piece
 public class Shark2 extends Shark {
+
+	private static final int ATTACK_POWER = 4;
+	private static final int DEFENCE_POWER = 6;
+	private static final int MOVE_POWER = 3;
 
 	public Shark2(Player player) {
 		super(player);
-		
-		// TODO numbers should change depending on piece
-		this.attackPower = 10;
-		this.defencePower = 10;
-		this.movePower = 10;
+
+		this.attackPower = ATTACK_POWER;
+		this.defencePower = DEFENCE_POWER;
+		this.movePower = MOVE_POWER;
 	}
 
 	public String iconName() {
 		return "shark2";
 	}
-	
+
 }
