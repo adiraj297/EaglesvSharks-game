@@ -21,9 +21,10 @@ import Model.Piece.Obstacle1;
 import Model.Piece.Obstacle2;
 import Model.Piece.Piece;
 
+import Model.Piece.Shark1;
 import Model.Piece.Shark2;
 import Model.Piece.Shark3;
-import Model.Piece.Shark4;
+
 import View.MainFrame3;
 
 /**
@@ -74,14 +75,15 @@ public class GameController3 {
 	}
 
 	private void makePieces() {
-
+		
+		Piece s1 = new Shark1(null);
 		Piece s2 = new Shark2(null);
 		Piece s3 = new Shark3(null);
-		Piece s4 = new Shark4(null);
-
+		
+		
+		sharkPieces.add(s1);
 		sharkPieces.add(s2);
 		sharkPieces.add(s3);
-		sharkPieces.add(s4);
 
 		Piece e1 = new Eagle1(null);
 		Piece e2 = new Eagle2(null);

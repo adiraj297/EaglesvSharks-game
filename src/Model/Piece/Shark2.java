@@ -10,10 +10,11 @@ public class Shark2 extends Shark {
 
 	public Shark2(Player player) {
 		super(player);
-
-		this.attackPower = ATTACK_POWER;
-		this.defencePower = DEFENCE_POWER;
-		this.movePower = MOVE_POWER;
+		
+		// TODO numbers should change depending on piece
+		this.attackPower = 4;
+		this.defencePower = 6;
+		this.movePower = 3;
 	}
 
 	public String iconName() {
