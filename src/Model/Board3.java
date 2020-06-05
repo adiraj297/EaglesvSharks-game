@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import Model.Piece.Piece;
@@ -9,8 +10,12 @@ import Model.Piece.Piece;
  * @author mohammed
  *
  */
-public class Board3 {
+public class Board3 implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Board size has to be even and above 10
 	private final int BOARD_SIZE = 12;
 	private Square[][] board;

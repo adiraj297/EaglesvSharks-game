@@ -1,5 +1,14 @@
 package Model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.List;
 
 import Model.Piece.Piece;
@@ -9,8 +18,12 @@ import Model.Piece.Piece;
  * @author mohammed
  *
  */
-public class Board {
+public class Board implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Board size has to be even and above 10
 	private final int BOARD_SIZE = 12;
 	private Square[][] board;
@@ -45,7 +58,6 @@ public class Board {
 		
 	}
 	
-	
 	/**
 	 * Get Square based on coordinates x,y => row,col
 	 * @param x
@@ -60,4 +72,7 @@ public class Board {
 	public Square[][] getBoard(){
 		return this.board;
 	}
+
+	
+	
 }

@@ -1,79 +1,79 @@
 package View;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.border.Border;
 
 import Controller.GameController;
 import Model.Board;
 import Model.Square;
 import Model.Piece.Piece;
 
-
 /**
  * @author mohammed
  *
  */
-public class BoardPanel extends JPanel{
-	
-	final List<SquarePanel> boardSquares; 
-	
+public class BoardPanel extends JPanel {
+
+	final List<SquarePanel> boardSquares;
+
 	Board board;
 	final GameController controller;
-	
+
 	private Square srcSquare;
 	private Square targetSquare;
 	private Piece selectedPiece;
-	
+	private SquarePanel lastSqrPanel;
+	private String lastPlayer = null;
+	private JPanel statusP;
 
-	public BoardPanel(Board board, GameController controller) {
-		
+	public BoardPanel(Board board, GameController controller, JPanel statusP) {
+
 		this.board = board;
 		this.controller = controller;
-		
+		this.statusP = statusP;
 		this.boardSquares = new ArrayList<SquarePanel>();
 		setLayout(null);
-		
-		
+
 		drawBoard();
-		
+
 //		onPressSquare();
-		
-		setLayout(new GridLayout(12,12, 0, 0));
+
+		setLayout(new GridLayout(12, 12, 0, 0));
 		setPreferredSize(new Dimension(1000, 1000));
 	}
-	
-    public void drawBoard() {
-	    for(int i = 0; i < 12; i++) {
-	    	for(int j = 0; j < 12; j++) {
-	    		final SquarePanel squarePanel = new SquarePanel(this, i, j);
-	    		boardSquares.add(squarePanel);
-	    		
 
-                
-                add(squarePanel); 
-		    }
-	    }
-        
-    }
-    
-	public void redraw(Board borad) {
+	public void drawBoard() {
+		for (int i = 0; i < 12; i++) {
+			for (int j = 0; j < 12; j++) {
+				final SquarePanel squarePanel = new SquarePanel(this, i, j);
+				boardSquares.add(squarePanel);
+
+				add(squarePanel);
+			}
+		}
+
+	}
+
+	public void redraw(Board board) {
 		removeAll();
-		for(SquarePanel sqrPanel: boardSquares) {
+		for (SquarePanel sqrPanel : boardSquares) {
 			sqrPanel.drawSquare(board);
 			add(sqrPanel);
 		}
@@ -81,90 +81,135 @@ public class BoardPanel extends JPanel{
 		repaint();
 	}
 
-    
-    
-    private class SquarePanel extends JPanel{
-    	private final int row;
-    	private final int col;
-    	
-    	SquarePanel(final BoardPanel boardPanel, final int row, final int col){
-    		super(new GridBagLayout());
-    		this.row = row;
-    		this.col = col;
-    		
-    		squareColor();
-    		
-    		try {
+	private class SquarePanel extends JPanel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 183436188435541249L;
+		private final int row;
+		private final int col;
+
+		SquarePanel(final BoardPanel boardPanel, final int row, final int col) {
+
+			super(new GridBagLayout());
+			this.row = row;
+			this.col = col;
+
+			squareColor();
+
+			try {
 				squareIcon(board);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-    		
-    		System.out.println("piece init");
-    		addMouseListener(new MouseListener() {
+			Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
+			Border redBorder = BorderFactory.createLineBorder(Color.RED, 5);
+
+			System.out.println("piece init");
+			addMouseListener(new MouseListener() {
 
 				@Override
 				public void mouseClicked(MouseEvent e) {
 				}
 
 				@Override
-				public void mousePressed(MouseEvent e) {}
+				public void mousePressed(MouseEvent e) {
+				}
 
 				@Override
 				public void mouseReleased(MouseEvent e) {
-					if(SwingUtilities.isRightMouseButton(e)) {
+					if (SwingUtilities.isRightMouseButton(e)) {
 						System.out.println("piece deselected");
+
+						if (null != lastSqrPanel) {
+							lastSqrPanel.setBorder(blackBorder);
+							lastSqrPanel = null;
+						}
 						srcSquare = null;
 						targetSquare = null;
 						selectedPiece = null;
-					}else if(SwingUtilities.isLeftMouseButton(e)) {
-						if(srcSquare == null) {
-							
+					} else if (SwingUtilities.isLeftMouseButton(e)) {
+
+						if (srcSquare == null) {
+
 							srcSquare = board.getSquare(row, col);
-							selectedPiece = srcSquare.getPiece();
-							if(selectedPiece == null) {
-								srcSquare = null;
-								
-							}else
+
+							if (null != srcSquare.getPiece()
+									&& (null == lastPlayer || !srcSquare.getPiece().iconName().contains(lastPlayer))) {
+								selectedPiece = srcSquare.getPiece();
+								if (selectedPiece == null) {
+									srcSquare = null;
+
+								} else {
+									lastSqrPanel = (SquarePanel) e.getSource();
+								}
+								if (null != lastSqrPanel)
+									lastSqrPanel.setBorder(redBorder);
 								System.out.println("first piece selected");
-						}else {
+							} else {
+
+								srcSquare = null;
+								if (null != lastPlayer) {
+									String player = lastPlayer.contains("shark") ? "Eagle" : "Shark";
+									JOptionPane.showMessageDialog(SwingUtilities.getRootPane(boardPanel),
+											player + "'s turn to play. Please wait for your turn.");
+								}
+							}
+
+						} else {
 							System.out.println("second piece selected");
 							targetSquare = board.getSquare(row, col);
-							controller.movePiece(srcSquare, targetSquare);
+							if (null != lastSqrPanel)
+								lastSqrPanel.setBorder(blackBorder);
+							lastSqrPanel = null;
+							
+							boolean moveStatus  = controller.movePiece(srcSquare, targetSquare);
+							if (null != selectedPiece) {
+								lastPlayer = selectedPiece.iconName();
+								lastPlayer = lastPlayer.substring(0, lastPlayer.length() - 1);
+								if(!moveStatus)
+									lastPlayer = null;
+							}
 							srcSquare = null;
 							targetSquare = null;
 							selectedPiece = null;
 							boardPanel.revalidate();
+							String gameStatus = controller.checkGameStatus();
+							if (null != controller.checkGameStatus()) {
+								JOptionPane.showMessageDialog(SwingUtilities.getRootPane(boardPanel), gameStatus);
+							}
+							
 						}
+						statusP = null;
 						SwingUtilities.invokeLater(new Runnable() {
 
 							@Override
 							public void run() {
 								boardPanel.redraw(board);
-								
+
 							}
-							
+
 						});
-						
+
 					}
 				}
 
 				@Override
-				public void mouseEntered(MouseEvent e) {}
+				public void mouseEntered(MouseEvent e) {
+				}
 
 				@Override
-				public void mouseExited(MouseEvent e) {}
-    			
-    		});
-    		
-    		
-    		validate();
-    	}
-    	 
-    	public void drawSquare(Board board) {
-    		squareColor();
-    		try {
+				public void mouseExited(MouseEvent e) {
+				}
+
+			});
+
+			validate();
+		}
+
+		public void drawSquare(Board board) {
+			squareColor();
+			try {
 				squareIcon(board);
 				validate();
 				repaint();
@@ -172,61 +217,64 @@ public class BoardPanel extends JPanel{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-    	}
-    	
-    	private void squareColor() {
-    		if((this.row+this.col)%2==1) setBackground(Color.black);
-    		else setBackground(Color.white);
-    	}
-    	
-    	private void squareIcon(final Board board) throws IOException {
-    		removeAll();
-    		Piece piece = board.getSquare(this.row, this.col).getPiece();
-    		if(piece != null) {    		
-				ImageIcon icon = scaleImage(new ImageIcon(this.getClass().getResource("/resources/" + piece.iconName() +".png")));
+		}
+
+		private void squareColor() {
+			if ((this.row + this.col) % 2 == 1)
+				setBackground(Color.black);
+			else
+				setBackground(Color.white);
+		}
+
+		private void squareIcon(final Board board) throws IOException {
+			removeAll();
+			Piece piece = board.getSquare(this.row, this.col).getPiece();
+			if (piece != null) {
+				ImageIcon icon = scaleImage(
+						new ImageIcon(this.getClass().getResource("/resources/" + piece.iconName() + ".png")));
 				add(new JLabel(icon));
-    		}
-    	}
-    	
-        private ImageIcon scaleImage(ImageIcon icon) {
-        	Image img = icon.getImage();
-        	Image resizedImage = img.getScaledInstance(75, 75,  java.awt.Image.SCALE_SMOOTH);
-        	return new ImageIcon(resizedImage);
-        }
-    	
-    }
-    
-    private class BoardMouseListener implements MouseListener{
+			}
+		}
+
+		private ImageIcon scaleImage(ImageIcon icon) {
+			Image img = icon.getImage();
+			Image resizedImage = img.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
+			return new ImageIcon(resizedImage);
+		}
+
+	}
+
+	private class BoardMouseListener implements MouseListener {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
-    	
-    }
+
+	}
 }
