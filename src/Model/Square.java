@@ -71,4 +71,6 @@ public class Square implements Serializable{
 	public String toString() {
 		return this.piece != null ? "p":row + "|" + col + " ";
 	}
+	
+	
 }
