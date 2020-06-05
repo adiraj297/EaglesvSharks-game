@@ -2,25 +2,22 @@ package Model.Piece;
 
 import Model.Player;
 
-/**
- * eagle child class
- * @author mohammed
- *
- */
-//TODO class name should represent descriptive naming piece
 public class Eagle1 extends Eagle {
+
+	private static final int ATTACK_POWER = 3;
+	private static final int DEFENCE_POWER = 7;
+	private static final int MOVE_POWER = 2;
 
 	public Eagle1(Player player) {
 		super(player);
-		
-		// TODO numbers should change depending on piece
-		this.attackPower = 3;
-		this.defencePower = 7;
-		this.movePower = 2;
+
+		this.attackPower = ATTACK_POWER;
+		this.defencePower = DEFENCE_POWER;
+		this.movePower = MOVE_POWER;
 	}
 
 	public String iconName() {
 		return "eagle1";
 	}
-	
+
 }

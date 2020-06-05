@@ -1,2 +1,10 @@
 /App$1.class
 /App.class
+/.DS_Store
+/.classpath
+/.gitignore
+/.project
+/Controller/
+/Model/
+/View/
+/resources/
