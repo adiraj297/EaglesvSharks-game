@@ -22,8 +22,8 @@ public class MainFrame3 extends JFrame {
 		this.board3 = board;
 		this.controller3 = controller;
 
-		JPanel statusP = new StatusPanel(this.controller3);
-		boardPanel3 = new BoardPanel3(this.board3, this.controller3);
+		JPanel statusP = new StatusPanel(this.controller3,this.board3);
+		boardPanel3 = new BoardPanel3(this.board3, this.controller3, statusP);
 		
 
 		add(boardPanel3, BorderLayout.CENTER);

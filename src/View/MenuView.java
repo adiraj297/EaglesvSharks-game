@@ -187,6 +187,7 @@ public class MenuView {
 		f.setSize(500, y);// 500 width and 350 height
 		f.setLayout(null);// using no layout managers
 		f.setVisible(true);// making the frame visible
+		
 
 	}
 
