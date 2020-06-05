@@ -1,7 +1,6 @@
 package View;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -41,19 +40,17 @@ public class BoardPanel extends JPanel {
 	private Piece selectedPiece;
 	private SquarePanel lastSqrPanel;
 	private String lastPlayer = null;
-	private JPanel statusP;
 
 	public BoardPanel(Board board, GameController controller, JPanel statusP) {
 
 		this.board = board;
 		this.controller = controller;
-		this.statusP = statusP;
 		this.boardSquares = new ArrayList<SquarePanel>();
 		setLayout(null);
 
 		drawBoard();
 
-//		onPressSquare();
+		// onPressSquare();
 
 		setLayout(new GridLayout(12, 12, 0, 0));
 		setPreferredSize(new Dimension(1000, 1000));
@@ -162,12 +159,12 @@ public class BoardPanel extends JPanel {
 							if (null != lastSqrPanel)
 								lastSqrPanel.setBorder(blackBorder);
 							lastSqrPanel = null;
-							
-							boolean moveStatus  = controller.movePiece(srcSquare, targetSquare);
+
+							boolean moveStatus = controller.movePiece(srcSquare, targetSquare);
 							if (null != selectedPiece) {
 								lastPlayer = selectedPiece.iconName();
 								lastPlayer = lastPlayer.substring(0, lastPlayer.length() - 1);
-								if(!moveStatus)
+								if (!moveStatus)
 									lastPlayer = null;
 							}
 							srcSquare = null;
@@ -178,9 +175,8 @@ public class BoardPanel extends JPanel {
 							if (null != controller.checkGameStatus()) {
 								JOptionPane.showMessageDialog(SwingUtilities.getRootPane(boardPanel), gameStatus);
 							}
-							
+
 						}
-						statusP = null;
 						SwingUtilities.invokeLater(new Runnable() {
 
 							@Override
@@ -214,7 +210,6 @@ public class BoardPanel extends JPanel {
 				validate();
 				repaint();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -240,40 +235,6 @@ public class BoardPanel extends JPanel {
 			Image img = icon.getImage();
 			Image resizedImage = img.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
 			return new ImageIcon(resizedImage);
-		}
-
-	}
-
-	private class BoardMouseListener implements MouseListener {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
 
 	}

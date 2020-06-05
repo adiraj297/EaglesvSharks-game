@@ -8,8 +8,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
-
 import Model.Board;
 import Model.Game;
 import Model.Square;
@@ -28,17 +26,9 @@ import Model.Piece.Shark4;
 import Model.Piece.Shark5;
 import View.MainFrame;
 
-/**
- * Game controller class that will transmit data to model and view.
- * 
- * @author mohammed
- *
- */
+//Game controller class that will transmit data to model and view.
 public class GameController {
 
-	private MainFrame game;
-	private JButton square;
-	private JButton selectedSquare;
 	private int turn = 0;
 	private Game engine;
 	private final Board board;
@@ -58,7 +48,7 @@ public class GameController {
 
 		this.board = new Board(sharkPieces, eaglePieces, obstaclePieces);
 
-		this.game = new MainFrame(this.board, this);
+		new MainFrame(this.board, this);
 		this.engine = new Game();
 
 		startGame();
@@ -68,7 +58,7 @@ public class GameController {
 		this.sharkPieces = null;
 		this.board = board;
 
-		this.game = new MainFrame(this.board, this);
+		new MainFrame(this.board, this);
 		this.engine = new Game();
 
 		startGame();
@@ -108,21 +98,21 @@ public class GameController {
 	}
 
 	public void startGame() {
-//		game.board.onPressSquare(e->{
-//			selectedSquare = (JButton)e.getSource();
-//			if(selectedSquare != null ) { 
-//				if(selectedSquare.getIcon() != null) {
-//					square = selectedSquare;
-//				}else {
-//					if(square != null) {
-//						selectedSquare.setIcon(square.getIcon());
-//						square.setIcon(null);
-//						square = null;
-//						turn();
-//					}
-//				}
-//			}
-//		});
+		// game.board.onPressSquare(e->{
+		// selectedSquare = (JButton)e.getSource();
+		// if(selectedSquare != null ) {
+		// if(selectedSquare.getIcon() != null) {
+		// square = selectedSquare;
+		// }else {
+		// if(square != null) {
+		// selectedSquare.setIcon(square.getIcon());
+		// square.setIcon(null);
+		// square = null;
+		// turn();
+		// }
+		// }
+		// }
+		// });
 	}
 
 	public void turn() {
@@ -132,7 +122,7 @@ public class GameController {
 	}
 
 	public boolean movePiece(Square srcSquare, Square targetSquare) {
-		// check piece belongs to curr player
+		// check piece belongs to current player
 		if (srcSquare.getPiece().getPlayer() == engine.getCurrentPlayer())
 
 			if (engine.move(srcSquare, targetSquare)) {

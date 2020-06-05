@@ -107,21 +107,21 @@ public class GameController2 {
 	}
 
 	public void startGame() {
-//		game.board.onPressSquare(e->{
-//			selectedSquare = (JButton)e.getSource();
-//			if(selectedSquare != null ) { 
-//				if(selectedSquare.getIcon() != null) {
-//					square = selectedSquare;
-//				}else {
-//					if(square != null) {
-//						selectedSquare.setIcon(square.getIcon());
-//						square.setIcon(null);
-//						square = null;
-//						turn();
-//					}
-//				}
-//			}
-//		});
+		// game.board.onPressSquare(e->{
+		// selectedSquare = (JButton)e.getSource();
+		// if(selectedSquare != null ) {
+		// if(selectedSquare.getIcon() != null) {
+		// square = selectedSquare;
+		// }else {
+		// if(square != null) {
+		// selectedSquare.setIcon(square.getIcon());
+		// square.setIcon(null);
+		// square = null;
+		// turn();
+		// }
+		// }
+		// }
+		// });
 	}
 
 	public void turn() {

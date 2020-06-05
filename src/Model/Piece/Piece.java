@@ -1,21 +1,14 @@
 package Model.Piece;
 
-import java.io.Serializable;
-
 import Model.Player;
 import Model.Square;
 
 /**
- * piece class is an abstract class that gives the important and common functionalities that other ancestors can use. 
- * @author mohammed
- *
+ * piece class is an abstract class that gives the important and common
+ * functionalities that other ancestors can use.
  */
-public abstract class Piece implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public abstract class Piece {
+
 	protected int attackPower;
 	protected int defencePower;
 	protected int movePower;
@@ -27,10 +20,9 @@ public abstract class Piece implements Serializable{
 		this.player = player;
 		this.knocked = false;
 		this.square = null;
-//		this.player.addPiece(this);
+		// this.player.addPiece(this);
 	}
-	
-	
+
 	public Square getSquare() {
 		return square;
 	}
@@ -39,62 +31,37 @@ public abstract class Piece implements Serializable{
 		this.square = square;
 	}
 
-	/**
-	 * @return
-	 */
 	public int getAttackPower() {
 		return attackPower;
 	}
 
-	/**
-	 * @param attackPower
-	 */
 	public void setAttackPower(int attackPower) {
 		this.attackPower = attackPower;
 	}
 
-	/**
-	 * @return
-	 */
 	public int getDefencePower() {
 		return defencePower;
 	}
 
-	/**
-	 * @param defencePower
-	 */
 	public void setDefencePower(int defencePower) {
 		this.defencePower = defencePower;
 	}
 
-	/**
-	 * @return
-	 */
 	public boolean isKnocked() {
 		return knocked;
 	}
 
-	/**
-	 * 
-	 */
 	public void setKnocked() {
 		this.knocked = true;
 	}
 
-	/**
-	 * @return
-	 */
 	public int getMovePower() {
 		return movePower;
 	}
 
-	/**
-	 * @return
-	 */
 	public Player getPlayer() {
 		return player;
 	}
 
-	
 	public abstract String iconName();
 }
