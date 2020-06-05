@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import Model.Piece.Piece;
@@ -9,7 +10,7 @@ import Model.Piece.Piece;
  * @author mohammed
  *
  */
-public class Board{
+public class Board implements Serializable{
 	
 	//Board size has to be even and above 10
 	private final int BOARD_SIZE = 12;

@@ -1,5 +1,7 @@
 package Model.Piece;
 
+import java.io.Serializable;
+
 import Model.Player;
 import Model.Square;
 
@@ -7,8 +9,9 @@ import Model.Square;
  * piece class is an abstract class that gives the important and common
  * functionalities that other ancestors can use.
  */
-public abstract class Piece {
-
+public abstract class Piece  implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	protected int attackPower;
 	protected int defencePower;
 	protected int movePower;
