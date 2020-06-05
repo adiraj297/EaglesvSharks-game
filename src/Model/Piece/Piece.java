@@ -11,7 +11,6 @@ import Model.Square;
  */
 public abstract class Piece  implements Serializable {
 	
-	private static final long serialVersionUID = 1L;
 	protected int attackPower;
 	protected int defencePower;
 	protected int movePower;
