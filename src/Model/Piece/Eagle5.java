@@ -3,6 +3,7 @@ package Model.Piece;
 import Model.Player;
 
 /**
+ * eagle child class
  * @author mohammed
  *
  */
@@ -16,6 +17,10 @@ public class Eagle5 extends Eagle {
 		this.attackPower = 10;
 		this.defencePower = 10;
 		this.movePower = 10;
+	}
+	
+	public String iconName() {
+		return "eagle5";
 	}
 
 }
