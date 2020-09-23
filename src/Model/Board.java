@@ -7,7 +7,6 @@ import Model.Piece.Piece;
 
 /**
  * Board class will keep track of the board and squares in the board
- * @author mohammed
  *
  */
 public class Board implements Serializable{
