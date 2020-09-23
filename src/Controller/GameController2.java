@@ -28,7 +28,6 @@ import View.MainFrame2;
  * Game controller class that will transmit data to model and view.
  * 
  * @author Aditya Raj
- * @author Rajesh Choudhari
  *
  */
 public class GameController2 {
