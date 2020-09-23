@@ -5,7 +5,6 @@ import Model.Piece.Piece;
 /**
  * 
  * @author Aditya Raj
- * @author Rajesh Choudhari
  *
  */
 
