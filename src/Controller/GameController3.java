@@ -29,7 +29,7 @@ import View.MainFrame3;
  * Game controller class that will transmit data to model and view.
  * 
  * @author Aditya Raj
- * @author Rajesh Choudhari
+ * 
  *
  */
 
