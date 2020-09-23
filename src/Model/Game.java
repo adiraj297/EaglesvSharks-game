@@ -8,7 +8,6 @@ import Model.Piece.Piece;
 /**
  * this is the engine class that will control all the game and its logic.
  * 
- * @author mohammed
  *
  */
 public class Game {
