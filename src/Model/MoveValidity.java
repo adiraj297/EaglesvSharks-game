@@ -6,7 +6,6 @@ import Model.Piece.Piece;
  * responsible for checking the validity of moving a piece to a given square
  * 
  * @author Aditya Raj
- * @author Rajesh Choudhari
  *
  */
 public class MoveValidity {
