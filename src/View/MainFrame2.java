@@ -11,7 +11,6 @@ import Model.Board2;
 /**
  * 
  * @author Aditya Raj
- * @author Rajesh Choudhari
  *
  */
 public class MainFrame2 extends JFrame {
