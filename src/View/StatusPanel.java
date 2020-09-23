@@ -22,7 +22,6 @@ import Model.Board3;
 /**
  * 
  * @author Aditya Raj
- * @author Rajesh Choudhari
  *
  */
 
