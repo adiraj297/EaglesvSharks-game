@@ -3,7 +3,7 @@ import javax.swing.SwingUtilities;
 import Controller.MenuController;
 
 /**
- * @author mohammed
+ * @author Aditya Raj
  *
  */
 public class App {
