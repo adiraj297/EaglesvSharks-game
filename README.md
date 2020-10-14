@@ -1,4 +1,4 @@
-# Object Oriented Software Design ISYS1083/84
+# Eagles vs Sharks -  board game (Object Oriented Software Design) 
 
 # The board Game:
 
